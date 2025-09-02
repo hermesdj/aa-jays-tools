@@ -36,7 +36,7 @@ dependencies = [
 Homepage = "https://github.com/hermesdj/aa-jays-tools"
 
 [tool.flit.module]
-name = "jays-tools"
+name = "jaystools"
 
 [tool.isort]
 profile = "black"
