@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[o:jays-apps:p:aa-jays-tools:r:django-po]
+file_filter  = jaystools/locale/<lang>/LC_MESSAGES/django.po
+source_file  = jaystools/locale/en/LC_MESSAGES/django.po
+source_lang  = en_US
+type         = PO
+minimum_perc = 0
+lang_map     = zh_CN: zh_Hans, es_ES: es, fr_FR: fr, de: de, ko_KR: ko

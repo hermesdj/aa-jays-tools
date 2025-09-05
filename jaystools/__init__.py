@@ -6,3 +6,4 @@ default_app_config = "jaystools.apps.JaysToolsConfig"
 __version__ = "1.0.0"
 
 __title__ = "Jay's Army Tools"
+__app_name__="jaystools"

@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-05 20:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: cogs/me_recruter.py:47
+msgid "Fil de recrutement créé !"
+msgstr ""
+
+#: models/smart_filters.py:35
+msgid "The filter name that is shown to the admin."
+msgstr ""
+
+#: models/smart_filters.py:40
+msgid "The filter description that is show to end users."
+msgstr ""
+
+#: models/smart_filters.py:65
+msgid "Please create a filter!"
+msgstr ""
+
+#: models/smart_filters.py:78
+msgid "Please create an audit function !"
+msgstr ""
+
+#: models/smart_filters.py:87
+msgid "The number of days to look back to count recruitments"
+msgstr ""
+
+#: models/smart_filters.py:90
+msgid "The number of recruitments to pass the filter"
+msgstr ""
+
+#: models/smart_filters.py:98
+msgid "Smart Filter: Number of recruitments in time period"
+msgstr ""
