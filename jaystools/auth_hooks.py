@@ -1,7 +1,11 @@
 from allianceauth import hooks
 
 from .app_settings import securegroups_installed
-from .models import RecruitmentFilter
+from .app_settings import memberaudit_installed
+from .models.smart_filters import RecruitmentFilter
+
+if memberaudit_installed():
+    from .models.smart_filters import CharacterSkillPointFilter
 
 
 @hooks.register('discord_cogs_hook')
@@ -19,6 +23,11 @@ if securegroups_installed():
         :rtype: list
         """
 
-        return [
+        filter_list = [
             RecruitmentFilter
         ]
+
+        if memberaudit_installed():
+            filter_list.append(CharacterSkillPointFilter)
+
+        return filter_list

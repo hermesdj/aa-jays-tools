@@ -23,3 +23,10 @@ def securegroups_installed() -> bool:
     """
 
     return apps.is_installed(app_name="securegroups")
+
+def memberaudit_installed() -> bool:
+    """
+    Check if the alliance auth Member Audit module is installed
+    :return:
+    """
+    return apps.is_installed(app_name="memberaudit")
