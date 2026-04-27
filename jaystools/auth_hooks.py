@@ -1,7 +1,13 @@
+"""Alliance Auth hook registrations for jaystools integrations."""
+
 from allianceauth import hooks
 
-from .app_settings import securegroups_installed
 from .app_settings import memberaudit_installed
+from .app_settings import securegroups_installed
+from .models.smart_filters import JumpCloneConstellationFilter
+from .models.smart_filters import JumpCloneRegionFilter
+from .models.smart_filters import JumpCloneSolarSystemFilter
+from .models.smart_filters import JumpCloneStationFilter
 from .models.smart_filters import RecruitmentFilter
 
 if memberaudit_installed():
@@ -10,6 +16,8 @@ if memberaudit_installed():
 
 @hooks.register('discord_cogs_hook')
 def register_cogs():
+    """Expose Discord cogs provided by this plugin."""
+
     return ["jaystools.cogs.me_recruter"]
 
 
@@ -24,7 +32,11 @@ if securegroups_installed():
         """
 
         filter_list = [
-            RecruitmentFilter
+            RecruitmentFilter,
+            JumpCloneStationFilter,
+            JumpCloneSolarSystemFilter,
+            JumpCloneConstellationFilter,
+            JumpCloneRegionFilter,
         ]
 
         if memberaudit_installed():

@@ -68,7 +68,6 @@ disable = [
     "too-many-instance-attributes",
     "too-few-public-methods",
     "cyclic-import",
-    "imported-auth-user",
     "import-outside-toplevel",
     "fixme",
 ]

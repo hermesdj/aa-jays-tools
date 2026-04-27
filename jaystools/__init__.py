@@ -1,4 +1,4 @@
-""""Activity monitoring app for Alliance Auth."""
+"""Jay's Army Tools plugin for Alliance Auth."""
 
 # pylint: disable = invalid-name
 default_app_config = "jaystools.apps.JaysToolsConfig"
@@ -6,4 +6,4 @@ default_app_config = "jaystools.apps.JaysToolsConfig"
 __version__ = "1.0.2"
 
 __title__ = "Jay's Army Tools"
-__app_name__="jaystools"
+__app_name__ = "jaystools"
