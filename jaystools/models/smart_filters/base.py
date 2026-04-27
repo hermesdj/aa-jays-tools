@@ -2,7 +2,7 @@
 
 from collections import defaultdict
 
-from django.contrib.auth.models import User
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.db.models import F
 from django.utils.translation import gettext_lazy as _
@@ -30,12 +30,12 @@ class BaseFilter(models.Model):
     def __str__(self) -> str:
         return f"{self.name}: {self.description}"
 
-    def process_filter(self, user: User) -> bool:
+    def process_filter(self, user: AbstractBaseUser) -> bool:
         """Evaluate this filter for a single user."""
 
         raise NotImplementedError(_("Please create a filter!"))
 
-    def audit_filter(self, users: models.QuerySet[User]) -> dict:
+    def audit_filter(self, users: models.QuerySet) -> dict:
         """Evaluate this filter for a queryset of users with audit messages."""
 
         raise NotImplementedError(_("Please create an audit function !"))
@@ -63,7 +63,7 @@ class _JumpCloneBaseFilter(BaseFilter):
     def _location_queryset_kwargs(self, ids: list) -> dict:
         raise NotImplementedError
 
-    def process_filter(self, user: User) -> bool:
+    def process_filter(self, user: AbstractBaseUser) -> bool:
         ids = self._get_configured_ids()
         if not ids:
             return False
@@ -79,7 +79,7 @@ class _JumpCloneBaseFilter(BaseFilter):
 
         return qs.exists()
 
-    def audit_filter(self, users: models.QuerySet[User]) -> dict:
+    def audit_filter(self, users: models.QuerySet) -> dict:
         output = {
             user_id: {"message": "", "check": False}
             for user_id in users.values_list("id", flat=True)

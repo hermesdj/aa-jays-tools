@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-04-27
+
 ### Added
 - GitHub Actions workflows (`.github/workflows/main.yml` and `.github/workflows/publish.yml`) adapted from `aa-fitting-mastery` for this plugin's tox/test/build flow.
 - Expanded `README.md` with installation, configuration, optional integrations, and development workflow.
@@ -14,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Improved internal code documentation and lint compatibility across plugin modules.
+- Tox environments now install `django-eveuniverse` so `testauth.settings_aa4.local` resolves consistently in tests and pylint.
+- Added explicit runtime dependency on `humanize`, which is required by `CharacterSkillPointFilter`.
+- Release update to version `1.0.3`.
+
+### Validated
+- `DJANGO_SETTINGS_MODULE=testauth.settings_aa4.local python -u runtests.py jaystools -v 2` (**33 passed**).
+- `DJANGO_SETTINGS_MODULE=testauth.settings_aa4.local pylint --load-plugins pylint_django jaystools` (**10.00/10**).
+- `tox -e py312-django42` (**33 passed**, `coverage report` total **91%**).
+- `tox -e pylint` (**10.00/10**).
+- `python -m build` generated `aa_jays_tools-1.0.3.tar.gz` and `aa_jays_tools-1.0.3-py3-none-any.whl`.
 
 ## [1.0.2] - 2025-09-24
 

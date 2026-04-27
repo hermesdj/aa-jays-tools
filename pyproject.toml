@@ -30,6 +30,7 @@ classifiers = [
 ]
 dependencies = [
     "allianceauth>=4",
+    "humanize",
 ]
 
 [project.urls]

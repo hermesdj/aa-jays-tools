@@ -4,7 +4,7 @@ from collections import defaultdict
 from gettext import ngettext
 
 import humanize
-from django.contrib.auth.models import User
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -38,7 +38,7 @@ class CharacterSkillPointFilter(BaseFilter):
 
         return _(f"Member Audit Skills Points [{skill_point_threshold}]")
 
-    def process_filter(self, user: User) -> bool:
+    def process_filter(self, user: AbstractBaseUser) -> bool:
         character_model = _get_memberaudit_character_model()
         qs = character_model.objects.owned_by_user(user=user).filter(
             skillpoints__total__lte=self.sp_threshold
@@ -49,7 +49,7 @@ class CharacterSkillPointFilter(BaseFilter):
 
         return qs.exists()
 
-    def audit_filter(self, users: models.QuerySet[User]) -> dict:
+    def audit_filter(self, users: models.QuerySet) -> dict:
         character_model = _get_memberaudit_character_model()
         output = defaultdict(lambda: {"message": "", "check": False})
 

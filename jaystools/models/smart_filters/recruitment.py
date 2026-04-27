@@ -2,7 +2,7 @@
 
 from collections import defaultdict
 
-from django.contrib.auth.models import User
+from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -27,7 +27,7 @@ class RecruitmentFilter(BaseFilter):
         verbose_name = _("Smart Filter: Number of recruitments in time period")
         verbose_name_plural = verbose_name
 
-    def process_filter(self, user: User) -> bool:
+    def process_filter(self, user: AbstractBaseUser) -> bool:
         start_time = _get_threshold_date(timedelta_in_days=self.days)
         application_model = get_hrapplications_application_model()
 
@@ -39,7 +39,7 @@ class RecruitmentFilter(BaseFilter):
 
         return applications.count() >= self.recruitments_needed
 
-    def audit_filter(self, users: models.QuerySet[User]) -> dict:
+    def audit_filter(self, users: models.QuerySet) -> dict:
         start_time = _get_threshold_date(timedelta_in_days=self.days)
         application_model = get_hrapplications_application_model()
 

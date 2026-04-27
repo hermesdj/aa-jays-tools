@@ -1,5 +1,7 @@
 """Settings helpers and optional app detection for jaystools."""
 
+from typing import cast
+
 from django.apps import apps
 from django.conf import settings
 
@@ -19,8 +21,8 @@ def get_all_servers():
     servers = []
     if DISCORD_GUILD_IDS:
         servers += DISCORD_GUILD_IDS
-    if DISCORD_GUILD_ID:
-        guild_id = int(DISCORD_GUILD_ID)
+    if DISCORD_GUILD_ID is not None:
+        guild_id = int(cast(str | int, DISCORD_GUILD_ID))
         if guild_id not in servers:
             servers.append(guild_id)
     return servers
@@ -50,7 +52,7 @@ def get_memberaudit_character_model():
     if not memberaudit_installed():
         raise RuntimeError("memberaudit must be installed to use CharacterSkillPointFilter")
 
-    from memberaudit.models import Character  # pylint: disable=import-outside-toplevel
+    from memberaudit.models import Character  # pylint: disable=import-error,import-outside-toplevel
 
     return Character
 
@@ -61,7 +63,7 @@ def get_memberaudit_jump_clone_model():
     if not memberaudit_installed():
         raise RuntimeError("memberaudit must be installed to use jump clone filters")
 
-    from memberaudit.models import CharacterJumpClone  # pylint: disable=import-outside-toplevel
+    from memberaudit.models import CharacterJumpClone  # pylint: disable=import-error,import-outside-toplevel
 
     return CharacterJumpClone
 
