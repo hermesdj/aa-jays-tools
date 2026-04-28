@@ -2,6 +2,7 @@
 
 from allianceauth import hooks
 
+from .app_settings import fittings_installed
 from .app_settings import memberaudit_installed
 from .app_settings import securegroups_installed
 from .models.smart_filters import JumpCloneConstellationFilter
@@ -11,7 +12,11 @@ from .models.smart_filters import JumpCloneStationFilter
 from .models.smart_filters import RecruitmentFilter
 
 if memberaudit_installed():
+    from .models.smart_filters import CharacterCloneImplantsFilter
     from .models.smart_filters import CharacterSkillPointFilter
+
+if fittings_installed() and memberaudit_installed():
+    from .models.smart_filters import FittingInHangarFilter
 
 
 @hooks.register('discord_cogs_hook')
@@ -41,5 +46,9 @@ if securegroups_installed():
 
         if memberaudit_installed():
             filter_list.append(CharacterSkillPointFilter)
+            filter_list.append(CharacterCloneImplantsFilter)
+
+        if fittings_installed() and memberaudit_installed():
+            filter_list.append(FittingInHangarFilter)
 
         return filter_list

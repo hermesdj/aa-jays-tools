@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-04-28
+
+### Added
+- New smart filter `FittingInHangarFilter` to validate if a user owns a matching ship fit in their hangar via `fittings` + `memberaudit`.
+- New smart filter `CharacterCloneImplantsFilter` to validate jump clone implants from `memberaudit` data with `require_all` / `any` behavior.
+- Admin UI for clone implant selection now uses a dual-list multiselect (`FilteredSelectMultiple`) populated from `EveType` records.
+
+### Changed
+- Excluded the `Booster` group from clone-implant admin choices, so only implant items are selectable.
+- Smart filter registration now conditionally exposes fitting/clone implant filters based on installed dependencies.
+- Release update to version `1.0.4`.
+
+### Validated
+- `DJANGO_SETTINGS_MODULE=testauth.settings_aa4.local python -u runtests.py jaystools -v 2` (**59 passed**).
+- `DJANGO_SETTINGS_MODULE=testauth.settings_aa4.local pylint --load-plugins pylint_django jaystools` (**10.00/10**).
+- `python -m build` generated `aa_jays_tools-1.0.4.tar.gz` and `aa_jays_tools-1.0.4-py3-none-any.whl`.
+
 ## [1.0.3] - 2026-04-27
 
 ### Added
